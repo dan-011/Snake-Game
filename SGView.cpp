@@ -17,6 +17,8 @@ void SGAbstractView::SetStatus(int newStatus) {
 	status = newStatus;
 }
 
+
+
 SGStaticView::SGStaticView(SGAbstractModel& mdl) : model(mdl) {}
 SGStaticView::~SGStaticView() {}
 void SGStaticView::Show() {
@@ -25,13 +27,15 @@ void SGStaticView::Show() {
 	while (GetIsActive()) {
 		for (int i = 0; i < model.GetNumComponents(); i++) {
 			SGVisualComponent* cmpnt = model.GetVisualComponentAt(i);
-			ALLEGRO_BITMAP* frame = cmpnt->GetFrame();
-			if (frame != NULL) {
-				al_draw_bitmap(frame, cmpnt->GetXPos(), cmpnt->GetYPos(), 0);
-			}
+			//ALLEGRO_BITMAP* frame = cmpnt->GetFrame();
+			//if (frame != NULL) {
+			//	al_draw_bitmap(frame, cmpnt->GetXPos(), cmpnt->GetYPos(), 0);
+			//}
+			cmpnt->Draw();
 		}
 		al_flip_display();
 		Notify();
+		al_clear_to_color(al_map_rgb(255, 255, 255));
 	}
 	// transition.Play();
 	SetStatus(0);

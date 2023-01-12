@@ -45,6 +45,12 @@ ALLEGRO_BITMAP* SGIndivSpriteComponent::GetFrame() {
 	//std::cout << index << std::endl;
 	return frames.at(index);
 }
+void SGIndivSpriteComponent::Draw() {
+	ALLEGRO_BITMAP* frame = GetFrame();
+	if (frame != NULL) {
+		al_draw_bitmap(GetFrame(), GetXPos(), GetYPos(), 0);
+	}
+}
 void SGIndivSpriteComponent::AddFrame(ALLEGRO_BITMAP* frame) {
 	frames.push_back(frame);
 }

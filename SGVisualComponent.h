@@ -8,7 +8,8 @@ class SGVisualComponent { // maybe subclass, may use sprite sheet or individual 
 public:
 	SGVisualComponent(int xPos, int yPos, double waitTime);
 	virtual ~SGVisualComponent();
-	virtual ALLEGRO_BITMAP* GetFrame() = 0;
+	virtual ALLEGRO_BITMAP* GetFrame() = 0; // remove
+	virtual void Draw() = 0;
 	double GetWaitingTime() const;
 	int GetXPos() const;
 	void SetXPos(int x);
@@ -30,6 +31,7 @@ public:
 	SGIndivSpriteComponent(int xPos, int yPos, double waitTime);
 	virtual ~SGIndivSpriteComponent();
 	virtual ALLEGRO_BITMAP* GetFrame() override;
+	virtual void Draw() override;
 	void AddFrame(ALLEGRO_BITMAP* frame);
 
 private:
