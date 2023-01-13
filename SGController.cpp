@@ -50,7 +50,7 @@ SGAbstractView* SGFirstGameCtrl::GetView() {
 	return view;
 }
 void SGFirstGameCtrl::Tick() { // refactor
-	if (!model->GetGameStart()) return;
+	if (!model->GetGameStart() || model->GetGameOver()) return;
 	SGDirection lastDirection = model->GetSnakeHead()->GetDirection();
 	for (int i = 0; i < model->GetSnake().size(); i++) {
 		std::pair<int, int> coords = model->GetSnake().at(i).second;
@@ -70,15 +70,14 @@ void SGFirstGameCtrl::Tick() { // refactor
 				coords.first--;
 				break;
 		}
-		if (coords.first > model->GetNRows() || coords.first == 0 || coords.second > model->GetNCols() || coords.second == 0) {
+		if ((coords.first > model->GetNRows() || coords.first == 0 || coords.second > model->GetNCols() || coords.second == 0) || dynamic_cast<SGSnakeCell*>(model->GetCells().at(coords.first).at(coords.second)) != NULL) {
+			model->ActivateGameOver();
 			return;
 		}
 		SGAbstractCell* target = model->GetCells().at(coords.first).at(coords.second);
-		if (dynamic_cast<SGSnakeCell*>(target) != NULL) {
-			return;
-		}
-		else if (i == 0 && target != NULL) {
+		if (i == 0 && target != NULL) {
 			addingCells = target->Denomination();
+			model->SetScore(model->GetScore() + addingCells);
 			model->MoveConsumableAt(coords.first, coords.second);
 		}
 		model->GetSnake().at(i).first->SetDirection(lastDirection);

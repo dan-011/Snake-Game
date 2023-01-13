@@ -1,5 +1,9 @@
 Asset Credits:
 - Start Menu Background: FadwaAngela (deviantart.com)
 - Start Menu Snake: clipart-library.com
-- Orange Juice Font (not used in program): Brittney Murphy Design (dafont.com)
-- Press Start 2P Font: Codeman38 (dafont.com)
+- Orange Juice font: Brittney Murphy Design (dafont.com)
+- Press Start 2P font: Codeman38 (dafont.com)
+- Arcade Classic font: Pizzadude (1001fonts.com)
+- Cartoon Jungle Background: pikisuperstar (freepik.com)
+- Fun Blob font: Tokokoo (1001fonts.com)
+- Jungle Adventurer font: Tokokoo (1001fonts.com)

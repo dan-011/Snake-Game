@@ -41,13 +41,19 @@ SGStartupModel::SGStartupModel() {
 	snake->AddFrame(al_load_bitmap("Assets/Startup/StartupSnake.png"));
 	AddVisualComponent(snake);
 
-	SGTextComponent* title = new SGTextComponent(450, 100, 200, "Assets/Fonts/orange_juice.ttf", al_map_rgb(255, 255, 255), "SNAKE");
+	SGTextComponent* title = new SGTextComponent(460, 100, 200, "Assets/Fonts/orange_juice.ttf", al_map_rgb(255, 255, 255), "SNAKE");
 	AddVisualComponent(title);
+
+	SGTextComponent* enterToPlay = new SGTextComponent(460, 760, 30, "Assets/Fonts/PressStart2P.ttf", al_map_rgb(255, 255, 255), "Press ENTER to start");
+	AddVisualComponent(enterToPlay);
 }
 SGStartupModel::~SGStartupModel() {}
 
-SGFirstGameModel::SGFirstGameModel() : xOffset(250), yOffset(50), tickTime(0.1), gameStart(false) {
-	
+SGFirstGameModel::SGFirstGameModel() : xOffset(250), yOffset(75), tickTime(0.1), gameStart(false), score(0), gameOver(false) {
+	SGIndivSpriteComponent* background = new SGIndivSpriteComponent(0, 0, .12);
+	background->AddFrame(al_load_bitmap("Assets/ClassicMode/CartoonJungleBackground.jpg"));
+	AddVisualComponent(background);
+
 	for (int i = 1; i <= GetNRows(); i++) {
 		std::vector<SGAbstractCell*> row;
 		for (int j = 1; j <= GetNCols(); j++) {
@@ -85,6 +91,11 @@ SGFirstGameModel::SGFirstGameModel() : xOffset(250), yOffset(50), tickTime(0.1),
 	snake.push_back(std::pair<SGSnakeCell*, std::pair<int, int>>(snakeHead, headCoords));
 	AddVisualComponent(snakeHead);
 	cells.at(headCoords.first).at(headCoords.second) = snakeHead;
+
+	// scoreText = new SGTextComponent(900, 30, 75, "../../Game\ Fonts/FunBlob.ttf", al_map_rgb(0, 0, 0), "");
+	scoreText = new SGTextComponent(900, 55, 40, "Assets/Fonts/PressStart2P.ttf", al_map_rgb(255, 255, 255), "");
+	scoreText->SetText("Score: 0");
+	AddVisualComponent(scoreText);
 }
 SGFirstGameModel::~SGFirstGameModel() {}
 void SGFirstGameModel::EvaluateCoords(int& i, int& j) {
@@ -168,4 +179,20 @@ bool SGFirstGameModel::GetGameStart() const {
 }
 void SGFirstGameModel::SetGameStart(bool status) {
 	gameStart = status;
+}
+int SGFirstGameModel::GetScore() const {
+	return score;
+}
+void SGFirstGameModel::SetScore(int scr) {
+	score = scr;
+	char buff[128];
+	const char* txt = buff;
+	snprintf(buff, 128, "Score: %d", score);
+	scoreText->SetText(txt);
+}
+bool SGFirstGameModel::GetGameOver() const {
+	return gameOver;
+}
+void SGFirstGameModel::ActivateGameOver() {
+	gameOver = true;
 }

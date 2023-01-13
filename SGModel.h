@@ -2,6 +2,7 @@
 #define __SGMODEL_H
 
 #include "SGVisualComponent.h"
+#include "SGTextComponent.h"
 #include "SGCell.h"
 #include <vector>
 
@@ -44,6 +45,10 @@ public:
 	void MoveConsumableAt(int i, int j);
 	bool GetGameStart() const;
 	void SetGameStart(bool status);
+	int GetScore() const;
+	void SetScore(int scr);
+	bool GetGameOver() const;
+	void ActivateGameOver();
 
 private:
 	std::vector<std::pair<SGSnakeCell*, std::pair<int, int>>> snake;
@@ -53,6 +58,9 @@ private:
 	int yOffset;
 	double tickTime;
 	bool gameStart;
+	int score;
+	SGTextComponent* scoreText;
+	bool gameOver;
 };
 
 /*class SGTransition : public SGAbstractModel {

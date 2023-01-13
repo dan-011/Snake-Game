@@ -150,6 +150,7 @@
     <ClInclude Include="SGTextComponent.h" />
     <ClInclude Include="SGView.h" />
     <ClInclude Include="SGVisualComponent.h" />
+    <ClInclude Include="SGVisualShapes.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SGCell.cpp" />

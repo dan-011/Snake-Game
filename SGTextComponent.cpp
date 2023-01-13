@@ -32,6 +32,8 @@ int SGTextComponent::GetSize() const {
 }
 void SGTextComponent::SetSize(int sz) {
 	size = sz;
+	// al_destroy_font(font);
+	// font = al_load_ttf_font(fileDir, size, 0);
 }
 void SGTextComponent::SetColor(ALLEGRO_COLOR clr) {
 	color = clr;
