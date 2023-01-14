@@ -194,5 +194,9 @@ bool SGFirstGameModel::GetGameOver() const {
 	return gameOver;
 }
 void SGFirstGameModel::ActivateGameOver() {
+	for (auto snakeCell : snake) {
+		snakeCell.first->SetColors(150, 100, 100);
+	}
+	GetSnakeHead()->SetColors(126, 8, 8);
 	gameOver = true;
 }
