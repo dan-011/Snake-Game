@@ -3,9 +3,6 @@
 
 SGAbstractCell::SGAbstractCell(int x, int y) : SGVisualComponent(x, y, .12) {}
 SGAbstractCell::~SGAbstractCell() {}
-ALLEGRO_BITMAP* SGAbstractCell::GetFrame() {
-	return NULL;
-}
 int SGAbstractCell::GetRadius() const {
 	return 30;
 }

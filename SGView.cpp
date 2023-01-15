@@ -27,10 +27,6 @@ void SGStaticView::Show() {
 	while (GetIsActive()) {
 		for (int i = 0; i < model.GetNumComponents(); i++) {
 			SGVisualComponent* cmpnt = model.GetVisualComponentAt(i);
-			//ALLEGRO_BITMAP* frame = cmpnt->GetFrame();
-			//if (frame != NULL) {
-			//	al_draw_bitmap(frame, cmpnt->GetXPos(), cmpnt->GetYPos(), 0);
-			//}
 			cmpnt->Draw();
 		}
 		al_flip_display();

@@ -1,6 +1,7 @@
 #include "SGModel.h"
 #include "SGCell.h"
 #include "SGTextComponent.h"
+#include "SGScreens.h"
 #include <cstdlib>
 
 SGAbstractModel::~SGAbstractModel() {
@@ -93,6 +94,9 @@ SGFirstGameModel::SGFirstGameModel() : xOffset(250), yOffset(75), tickTime(0.1),
 	cells.at(headCoords.first).at(headCoords.second) = snakeHead;
 
 	// scoreText = new SGTextComponent(900, 30, 75, "../../Game\ Fonts/FunBlob.ttf", al_map_rgb(0, 0, 0), "");
+	scoreText = new SGTextComponent(200, 30, 75, "Assets/Fonts/FunBlob.ttf", al_map_rgb(0, 0, 0), "Classic Mode");
+	AddVisualComponent(scoreText);
+
 	scoreText = new SGTextComponent(900, 55, 40, "Assets/Fonts/PressStart2P.ttf", al_map_rgb(255, 255, 255), "");
 	scoreText->SetText("Score: 0");
 	AddVisualComponent(scoreText);
@@ -199,4 +203,7 @@ void SGFirstGameModel::ActivateGameOver() {
 	}
 	GetSnakeHead()->SetColors(126, 8, 8);
 	gameOver = true;
+	SGClassicGameOverScreen* gameOverScreen = new SGClassicGameOverScreen;
+	gameOverScreen->AddScore(score);
+	AddVisualComponent(gameOverScreen);
 }

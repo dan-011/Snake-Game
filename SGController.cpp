@@ -119,6 +119,9 @@ void SGFirstGameCtrl::Down() {
 	}
 }
 void SGFirstGameCtrl::Left() {
+	if (!model->GetGameStart()) {
+		model->GetSnakeHead()->SetDirection(WEST);
+	}
 	model->SetGameStart(true); // refactor this out
 	if (model->GetSnakeHead()->GetDirection() != EAST) {
 		model->GetSnakeHead()->SetDirection(WEST);

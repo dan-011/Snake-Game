@@ -19,21 +19,12 @@ public:
 	void SetSize(int sz);
 	void SetColor(ALLEGRO_COLOR clr);
 	void SetFont(char* fontDir);
-	ALLEGRO_BITMAP* GetFrame() override;
+
 private:
 	ALLEGRO_FONT* font;
 	ALLEGRO_COLOR color;
 	int size;
 	char text[128];
-
-	// need color
-	// need font
-	// need size
-	// need xPos
-	// need yPos
-	// need char* text
-	//al_draw_text(score_font, white, 230, 195, 0, scr3);
-	//score_font = al_load_ttf_font("Assets/Fonts/alagard.ttf", 20, 0);
 
 };
 

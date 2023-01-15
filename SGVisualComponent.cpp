@@ -32,7 +32,8 @@ SGIndivSpriteComponent::~SGIndivSpriteComponent() {
 	}
 }
 #include <iostream>
-ALLEGRO_BITMAP* SGIndivSpriteComponent::GetFrame() {
+
+void SGIndivSpriteComponent::Draw() {
 	if (al_get_time() - GetTime() > GetWaitingTime()) {
 		//std::cout << al_get_time() << " : " << GetTime() << " : " << al_get_time() - GetTime() << " : ";
 		index++;
@@ -42,13 +43,9 @@ ALLEGRO_BITMAP* SGIndivSpriteComponent::GetFrame() {
 		SetTime(al_get_time());
 		//std::cout << GetTime() << std::endl;
 	}
-	//std::cout << index << std::endl;
-	return frames.at(index);
-}
-void SGIndivSpriteComponent::Draw() {
-	ALLEGRO_BITMAP* frame = GetFrame();
+	ALLEGRO_BITMAP* frame = frames.at(index);
 	if (frame != NULL) {
-		al_draw_bitmap(GetFrame(), GetXPos(), GetYPos(), 0);
+		al_draw_bitmap(frame, GetXPos(), GetYPos(), 0);
 	}
 }
 void SGIndivSpriteComponent::AddFrame(ALLEGRO_BITMAP* frame) {

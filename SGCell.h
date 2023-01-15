@@ -12,7 +12,6 @@ public:
 	void SetXPos(int x);
 	int GetYPos() const;
 	void SetYPos(int y);*/
-	virtual ALLEGRO_BITMAP* GetFrame() override;
 	virtual int Denomination() = 0;
 	int GetRadius() const;
 	virtual void SetColors(int r, int g, int b);

@@ -42,7 +42,3 @@ void SGTextComponent::SetFont(char* fontDir) {
 	al_destroy_font(font);
 	font = al_load_ttf_font(fontDir, size, 0);
 }
-
-ALLEGRO_BITMAP* SGTextComponent::GetFrame() {
-	return NULL;
-}

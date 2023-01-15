@@ -54,6 +54,9 @@
     <ClInclude Include="SGVisualShapes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="SGScreens.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SGModel.cpp">
@@ -84,6 +87,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SGTextComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SGScreens.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

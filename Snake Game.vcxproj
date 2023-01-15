@@ -145,6 +145,7 @@
     <ClInclude Include="SGCtrlManager.h" />
     <ClInclude Include="SGModel.h" />
     <ClInclude Include="SGObservers.h" />
+    <ClInclude Include="SGScreens.h" />
     <ClInclude Include="SGSubject.h" />
     <ClInclude Include="SGSupport.h" />
     <ClInclude Include="SGTextComponent.h" />
@@ -159,6 +160,7 @@
     <ClCompile Include="SGMain.cpp" />
     <ClCompile Include="SGModel.cpp" />
     <ClCompile Include="SGObservers.cpp" />
+    <ClCompile Include="SGScreens.cpp" />
     <ClCompile Include="SGSubject.cpp" />
     <ClCompile Include="SGTextComponent.cpp" />
     <ClCompile Include="SGView.cpp" />
