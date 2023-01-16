@@ -11,6 +11,7 @@ public:
 	virtual void EndMode() = 0;
 	virtual SGAbstractModel* GetModel() = 0;
 	virtual SGAbstractView* GetView() = 0;
+	virtual bool GetGameOver();
 	virtual void Tick();
 	virtual void Up();
 	virtual void Down();
@@ -40,6 +41,7 @@ public:
 	virtual void EndMode() override;
 	virtual SGAbstractModel* GetModel() override;
 	virtual SGAbstractView* GetView() override;
+	virtual bool GetGameOver() override;
 	virtual void Tick() override;
 	virtual void Up() override;
 	virtual void Down() override;

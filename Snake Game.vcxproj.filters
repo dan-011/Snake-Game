@@ -92,5 +92,8 @@
     <ClCompile Include="SGScreens.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SGAudioComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

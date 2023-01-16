@@ -1,2 +1,13 @@
-﻿  SGScreens.cpp
+﻿  SGAudioComponent.cpp
+  SGCell.cpp
+  SGController.cpp
+  SGCtrlManager.cpp
+  SGMain.cpp
+  SGModel.cpp
+  SGObservers.cpp
+  SGScreens.cpp
+  SGTextComponent.cpp
+  SGView.cpp
+  SGVisualComponent.cpp
+  Generating Code...
   Snake Game.vcxproj -> C:\Users\dpali\Documents\C++ Projects\Snake Game\x64\Debug\Snake Game.exe

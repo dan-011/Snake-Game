@@ -81,4 +81,15 @@ private:
 	SGSubject& subject;
 	SGCtrlManager& ctrlManager;
 };
+
+class SGRKeyObserver : public SGAbstractObserver {
+public:
+	SGRKeyObserver(SGSubject& subj, SGCtrlManager& manager);
+	virtual ~SGRKeyObserver();
+	virtual bool Update() override;
+
+private:
+	SGSubject& subject;
+	SGCtrlManager& ctrlManager;
+};
 #endif // !__SGOBSERVERS_H

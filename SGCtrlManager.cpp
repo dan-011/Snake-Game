@@ -4,6 +4,8 @@
 #include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_font.h>
 #include <allegro5/allegro_ttf.h>
+#include <allegro5/allegro_acodec.h>
+#include <allegro5/allegro_audio.h>
 #include <iostream>
 
 SGCtrlManager::SGCtrlManager(): currentCtrlIndex(-1), lastKeyPressed(0) {
@@ -12,7 +14,10 @@ SGCtrlManager::SGCtrlManager(): currentCtrlIndex(-1), lastKeyPressed(0) {
 	al_init_primitives_addon();
 	al_init_font_addon();
 	al_init_ttf_addon();
+	al_init_acodec_addon();
+
 	al_install_keyboard();
+	al_install_audio();
 
 	display = al_create_display(GetDisplayWidth(), GetDisplayHeight());
 
@@ -27,6 +32,9 @@ SGCtrlManager::SGCtrlManager(): currentCtrlIndex(-1), lastKeyPressed(0) {
 	SGDownObserver* downObserver = new SGDownObserver(*(firstGameCtrl->GetView()), *this);
 	SGLeftObserver* leftObserver = new SGLeftObserver(*(firstGameCtrl->GetView()), *this);
 	SGRightObserver* rightObserver = new SGRightObserver(*(firstGameCtrl->GetView()), *this);
+	SGRKeyObserver* rKeyObserver = new SGRKeyObserver(*(firstGameCtrl->GetView()), *this);
+	SGEscapeObserver* firstGameEscapeObserver = new SGEscapeObserver(*(firstGameCtrl->GetView()), *this); // find a way to use the same observers when reusing
+
 	sequenceCtrls.push_back(firstGameCtrl);
 }
 SGCtrlManager::~SGCtrlManager() {
@@ -35,6 +43,8 @@ SGCtrlManager::~SGCtrlManager() {
 	}
 	al_destroy_display(display);
 	al_uninstall_keyboard();
+	al_uninstall_audio();
+
 }
 SGAbstractCtrl* SGCtrlManager::GetCurrentCtrl() {
 	return sequenceCtrls.at(currentCtrlIndex);
@@ -68,4 +78,22 @@ int SGCtrlManager::GetLastKeyPressed() const {
 }
 void SGCtrlManager::SetLastKeyPressed(int key) {
 	lastKeyPressed = key;
+}
+
+void SGCtrlManager::RestartCurrentMode() { // refactor with abstract factory
+	// find better way to restart the current mode (reset the model, don't throw away the controller
+	SGFirstGameCtrl* newGameCtrl = new SGFirstGameCtrl;
+	SGTickObserver* tickObserver = new SGTickObserver(*(newGameCtrl->GetView()), *this);
+	SGUpObserver* upObserver = new SGUpObserver(*(newGameCtrl->GetView()), *this);
+	SGDownObserver* downObserver = new SGDownObserver(*(newGameCtrl->GetView()), *this);
+	SGLeftObserver* leftObserver = new SGLeftObserver(*(newGameCtrl->GetView()), *this);
+	SGRightObserver* rightObserver = new SGRightObserver(*(newGameCtrl->GetView()), *this);
+	SGRKeyObserver* rKeyObserver = new SGRKeyObserver(*(newGameCtrl->GetView()), *this);
+	SGEscapeObserver* escapeObserver = new SGEscapeObserver(*(newGameCtrl->GetView()), *this); // find a way to use the same observers when reusing
+
+	SGAbstractCtrl* currentCtrl = GetCurrentCtrl();
+	sequenceCtrls.at(currentCtrlIndex) = newGameCtrl;
+	currentCtrl->EndMode();
+	delete currentCtrl;
+	newGameCtrl->StartMode();
 }

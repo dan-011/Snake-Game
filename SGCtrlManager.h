@@ -14,6 +14,7 @@ public:
 	void NextMode();
 	void PrevMode();
 	void End();
+	void RestartCurrentMode(); // use abstract factory (refactor)
 	int GetLastKeyPressed() const;
 	void SetLastKeyPressed(int key);
 

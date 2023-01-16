@@ -88,3 +88,15 @@ bool SGRightObserver::Update() {
 	}
 	return false;
 }
+
+SGRKeyObserver::SGRKeyObserver(SGSubject& subj, SGCtrlManager& manager) : subject(subj), ctrlManager(manager) {
+	subject.AddChild(this);
+}
+SGRKeyObserver::~SGRKeyObserver() {}
+bool SGRKeyObserver::Update() {
+	if (al_key_down(subject.GetKeyState(), ALLEGRO_KEY_R) && ctrlManager.GetCurrentCtrl()->GetGameOver()) {
+		ctrlManager.RestartCurrentMode();
+		return true;
+	}
+	return false;
+}

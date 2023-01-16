@@ -2,7 +2,7 @@
 #define __SGVISUALCOMPONENT_H
 
 #include <vector>
-#include "allegro5/allegro.h"
+#include <allegro5/allegro.h>
 
 class SGVisualComponent { // maybe subclass, may use sprite sheet or individual sprites
 public:

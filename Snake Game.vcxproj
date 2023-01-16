@@ -154,6 +154,7 @@
     <ClInclude Include="SGVisualShapes.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="SGAudioComponent.cpp" />
     <ClCompile Include="SGCell.cpp" />
     <ClCompile Include="SGController.cpp" />
     <ClCompile Include="SGCtrlManager.cpp" />

@@ -1,6 +1,9 @@
 #include "SGController.h"
 
 SGAbstractCtrl::~SGAbstractCtrl() {}
+bool SGAbstractCtrl::GetGameOver() {
+	return false;
+}
 void SGAbstractCtrl::Tick() {}
 void SGAbstractCtrl::Up() {}
 void SGAbstractCtrl::Down() {}
@@ -132,4 +135,7 @@ void SGFirstGameCtrl::Right() {
 	if (model->GetSnakeHead()->GetDirection() != WEST) {
 		model->GetSnakeHead()->SetDirection(EAST);
 	}
+}
+bool SGFirstGameCtrl::GetGameOver() {
+	return model->GetGameOver();
 }
